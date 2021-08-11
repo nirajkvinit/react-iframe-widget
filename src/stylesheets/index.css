@@ -6,3 +6,16 @@ body {
   margin: 0;
   padding: 0;
 }
+.bottleGreen {
+  background-color: #7dae81 !important;
+}
+
+.blink_me {
+  animation: blinker 1.5s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
