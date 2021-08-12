@@ -1,7 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
 import App from "./App";
-import { IConfig } from "./config/interfaces";
 import { Context } from "./context/context";
 import "./stylesheets/index.css";
 
@@ -14,33 +13,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     "*"
   );
   window.removeEventListener("DOMContentLoaded", () => null);
-  let data = localStorage.getItem("tasks");
-  if (!data) {
-    const tasks = {
-      active: [
-        {
-          id: 0,
-          title: "Buy Eggs",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        },
-        {
-          id: 1,
-          title: "Fix the Sink",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        },
-        {
-          id: 2,
-          title: "Buy Gifts",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        },
-      ],
-      completed: [],
-    };
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
 });
 
 window.addEventListener("message", (event) => {
@@ -55,10 +27,25 @@ window.addEventListener("message", (event) => {
 
   if (identifier !== "triviaquiz" && action !== "sendUserData") return;
 
+  const headerColor = getHeaderColor();
+
   return render(
-    <Context.Provider value={JSON.stringify(userData)}>
+    <Context.Provider value={JSON.stringify({ ...userData, headerColor })}>
       <App />
     </Context.Provider>,
     document.body
   );
 });
+
+const getHeaderColor = () => {
+  const colors = [
+    "triviaQuizIframeHeader1",
+    "triviaQuizIframeHeader2",
+    "triviaQuizIframeHeader3",
+    "triviaQuizIframeHeader4",
+    "triviaQuizIframeHeader5",
+    "triviaQuizIframeHeader6",
+  ];
+
+  return colors[Math.floor(Math.random() * colors.length)];
+};

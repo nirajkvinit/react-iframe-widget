@@ -10,18 +10,12 @@ const defaultStyles: any = {
   "pointer-events": "auto",
   "touch-action": "auto",
   position: "fixed",
-  right: "45vw",
+  right: "40vw",
   bottom: "0.5vh",
 };
-
-interface IConfig {
-  readonly email: string;
-}
-
 interface IWidget {
-  config: IConfig | null;
   iframe: HTMLIFrameElement | null;
-  init: (config: IConfig) => void;
+  init: () => void;
   setupListeners: () => void;
   createIframe: () => void;
   getStudentData: () => void;
@@ -30,10 +24,8 @@ interface IWidget {
 
 const Widget: IWidget = {
   iframe: null,
-  config: null,
-  init: function (config: IConfig) {
+  init: function () {
     if (shouldTriviaQuizOpen()) {
-      this.config = config;
       this.createIframe();
       this.getStudentData();
     }

@@ -6,8 +6,33 @@ body {
   margin: 0;
   padding: 0;
 }
-.bottleGreen {
+
+.triviaQuizIframeHeader1 {
+  background-color: #947eda !important;
+}
+
+.triviaQuizIframeHeader2 {
+  background-color: #ff8c19 !important;
+}
+
+.triviaQuizIframeHeader3 {
   background-color: #7dae81 !important;
+}
+
+.triviaQuizIframeHeader4 {
+  background-color: #3964d1 !important;
+}
+
+.triviaQuizIframeHeader5 {
+  background-color: #08a8d8 !important;
+}
+
+.triviaQuizIframeHeader6 {
+  background-color: #ff5090 !important;
+}
+
+.topCurve {
+  border-radius: 4px 4px 0 0;
 }
 
 .blink_me {
